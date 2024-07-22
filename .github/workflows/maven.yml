@@ -1,13 +1,14 @@
 on: workflow_dispatch
-steps:
-  - uses: actions/checkout@v4
-  - uses: actions/setup-java@v4
-    with:
-      java-version: '11'
-      distribution: 'temurin'
-  - run: mvn clean install -DskipTests=true
-  - run: mkdir staging && cp target/*.jar staging
-  - uses: actions/upload-artifact@v4
-    with:
-      name: Package
-      path: staging
+jobs:
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+    - run: mvn clean install -DskipTests=true
+    - run: mkdir staging && cp target/*.jar staging
+    - uses: actions/upload-artifact@v4
+      with:
+        name: Package
+        path: staging

@@ -10,9 +10,9 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
-      - run: mkdir /target
-      - run: mvn clean install -DskipTests=true -DoutputDirectory=/target
+      - run: mkdir target
+      - run: mvn clean install -DskipTests=true -DoutputDirectory=target
       - uses: actions/upload-artifact@v4
         with:
           name: Package
-          path: /target
+          path: target
